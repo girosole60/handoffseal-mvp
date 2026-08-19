@@ -123,3 +123,7 @@ python3 handoff_seal.py \
 若用户只需要 Open Data Editor 的单表校验、没有跨文件错误、没有重复批次，或首次运行后不再使用，就停止，不继续堆功能。
 
 当前目录的 `demo-*.zip` 只是本地回归样例，不代表已有外部用户或付费客户。
+
+## 试点入口
+
+如果你确实会重复交付多份 CSV/XLSX，并且遇到过跨文件不一致导致的返工、退回或解释成本，可以在 [GitHub 试点 Issue #1](https://github.com/girosole60/handoffseal-mvp/issues/1) 留言。不要上传真实业务文件，只需说明是否有重复批次、跨文件痛点，以及能否接受 Python/命令行启动。
