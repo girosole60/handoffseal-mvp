@@ -1,0 +1,49 @@
+{
+  "package": {
+    "customer": "ACME",
+    "period": "2026-08",
+    "version": "v1",
+    "filename_tokens": ["ACME", "2026-08", "v1"]
+  },
+  "files": [
+    {
+      "path": "ACME_2026-08_v1_summary.csv",
+      "kind": "csv",
+      "required_columns": ["metric", "value"],
+      "unique_key": "metric"
+    },
+    {
+      "path": "ACME_2026-08_v1_detail.csv",
+      "kind": "csv",
+      "required_columns": ["record_id", "amount"],
+      "unique_key": "record_id"
+    },
+    {
+      "path": "ACME_2026-08_v1_expected.csv",
+      "kind": "csv",
+      "required_columns": ["record_id", "label"],
+      "unique_key": "record_id"
+    },
+    {
+      "path": "ACME_2026-08_v1_README.txt",
+      "kind": "text"
+    }
+  ],
+  "cross_checks": [
+    {
+      "type": "key_set_equal",
+      "left": {"path": "ACME_2026-08_v1_detail.csv", "key": "record_id"},
+      "right": {"path": "ACME_2026-08_v1_expected.csv", "key": "record_id"}
+    },
+    {
+      "type": "row_count_matches",
+      "data_path": "ACME_2026-08_v1_detail.csv",
+      "expected": {
+        "path": "ACME_2026-08_v1_summary.csv",
+        "match_column": "metric",
+        "match_value": "detail_rows",
+        "value_column": "value"
+      }
+    }
+  ]
+}
